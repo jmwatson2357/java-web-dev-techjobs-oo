@@ -14,6 +14,7 @@ public class JobTest {
     Job job_two;
     Job job_three;
     Job job_four;
+    Job job_five;
     @Before
     public void createFirstJob(){
         job_one = new Job();
@@ -42,17 +43,25 @@ public class JobTest {
                 new CoreCompetency("Persistence")
         );
     }
+    @Before
+    public void createFifthJob() {
+        job_five = new Job(
+                "Product tester",
+                new Employer("ACME"),
+                new Location(""),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence")
+        );
+    }
 
     @Test
     public void emptyTest(){
         assertEquals(true, true);
     }
-
     @Test
     public void testSettingJobId(){
         assertTrue(job_one.getId() - job_two.getId() == 1);
     }
-
     @Test
     public void testJobConstructorSetsAlFields(){
         assertEquals("Product tester", job_three.getName());
@@ -69,4 +78,22 @@ public class JobTest {
         assertTrue(job_three.getPositionType().toString() == job_four.getPositionType().toString());
         assertTrue(job_three.getCoreCompetency().toString() == job_four.getCoreCompetency().toString());
     }
+    @Test
+    public void testForFirstLineBlank(){
+        assertTrue(job_five.toString().startsWith(" "));
+    }
+    @Test
+    public void testForLastLineBlank(){
+        assertTrue(job_five.toString().endsWith(" "));
+    }
+    @Test
+    public void testJobForBlankField(){
+        assertEquals("Data not available", job_five.getLocation().toString());
+    }
+    @Test
+    public void testForEmptyJob(){
+        assertEquals("OOPS! This job does not seem to exist.", job_one.getName());
+    }
+
+
 }
