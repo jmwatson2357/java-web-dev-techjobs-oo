@@ -79,11 +79,11 @@ public class JobTest {
     }
     @Test
     public void testForFirstLineBlank(){
-        assertTrue(job_five.toString().startsWith("'\n'"));
+        assertTrue(job_five.toString().startsWith("\n"));
     }
     @Test
     public void testForLastLineBlank(){
-        assertTrue(job_five.toString().endsWith("'\n'"));
+        assertTrue(job_five.toString().endsWith("\n"));
     }
     @Test
     public void testForLabels(){
