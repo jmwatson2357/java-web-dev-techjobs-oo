@@ -53,7 +53,6 @@ public class JobTest {
                 new CoreCompetency("Persistence")
         );
     }
-
     @Test
     public void emptyTest(){
         assertEquals(true, true);
@@ -85,6 +84,11 @@ public class JobTest {
     @Test
     public void testForLastLineBlank(){
         assertTrue(job_five.toString().endsWith(" "));
+    }
+    @Test
+    public void testForLabels(){
+        String j5_check = job_five.toString();
+        assertTrue(j5_check.contains("ID:"));
     }
     @Test
     public void testJobForBlankField(){
