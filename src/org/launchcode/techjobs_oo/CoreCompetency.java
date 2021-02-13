@@ -14,7 +14,11 @@ public class CoreCompetency{
 
     public CoreCompetency(String value) {
         this();
-        this.value = value;
+        if(value == null || value.length()<2){
+            this.value = "Data not available";
+        } else {
+            this.value = value;
+        }
     }
 
     @Override

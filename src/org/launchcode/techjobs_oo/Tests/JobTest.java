@@ -48,7 +48,7 @@ public class JobTest {
         job_five = new Job(
                 "Product tester",
                 new Employer("ACME"),
-                new Location(""),
+                new Location(null),
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence")
         );
@@ -79,16 +79,21 @@ public class JobTest {
     }
     @Test
     public void testForFirstLineBlank(){
-        assertTrue(job_five.toString().startsWith(" "));
+        assertTrue(job_five.toString().startsWith("'\n'"));
     }
     @Test
     public void testForLastLineBlank(){
-        assertTrue(job_five.toString().endsWith(" "));
+        assertTrue(job_five.toString().endsWith("'\n'"));
     }
     @Test
     public void testForLabels(){
         String j5_check = job_five.toString();
         assertTrue(j5_check.contains("ID:"));
+        assertTrue(j5_check.contains("Name:"));
+        assertTrue(j5_check.contains("Employer:"));
+        assertTrue(j5_check.contains("Location:"));
+        assertTrue(j5_check.contains("Position Type:"));
+        assertTrue(j5_check.contains("Core Competency:"));
     }
     @Test
     public void testJobForBlankField(){
@@ -96,7 +101,7 @@ public class JobTest {
     }
     @Test
     public void testForEmptyJob(){
-        assertEquals("OOPS! This job does not seem to exist.", job_one.getName());
+        assertEquals("OOPS! This job does not seem to exist.", job_one.toString());
     }
 
 
